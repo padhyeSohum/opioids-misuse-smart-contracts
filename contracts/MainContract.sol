@@ -12,10 +12,23 @@ contract MainContract {
         owner = msg.sender;
     }
 
-    // Create mapping for each address
+    // 1. Create mapping for each address
+
+    mapping(address => bool) hasPrescription;
+
+    // 2. Check if account address has prescription
+    function checkIfHasPrescription() public view returns (bool _hasPrescription) {
+        if (hasPrescription[msg.sender]) {
+            return _hasPrescription;
+        }
+        else {
+            return !_hasPrescription;
+        }
+    }
+
+
     // Create mapping for each type of opioid to the amount of days it should take for the person to use up all of it
     // => keep track of time by taking the timestamp from which it was originally prescribed
-    // Check if account address has prescription
     // Update
     // Add patient verification
 
